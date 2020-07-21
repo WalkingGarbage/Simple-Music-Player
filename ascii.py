@@ -57,3 +57,22 @@ def logo():
 
     print(text)
 
+
+
+
+def spacer():
+    print("""
+
+
+
+
+
+    """)
+
+
+
+
+
+
+
+
