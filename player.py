@@ -2,8 +2,12 @@
 
 import os
 import pyglet
+import mpv
+from playsound import playsound
+
 
 pyglet.options['search_local_libs'] = True
+
 
 class queue:
 
@@ -25,7 +29,6 @@ class queue:
         while True:
             num = int(input("Select the track: "))
             if num > 0 and num <= len(self.tracks):
-                print (num - 1)
                 self.song = self.tracks[num - 1]
                 break
             else:
@@ -33,5 +36,7 @@ class queue:
 
     def play(self):
         print(self.song)
-        source = pyglet.media.load(self.dir + self.song)
-        source.play()
+        source = mpv.MPV(ytdl=True)
+        source.play(self.dir + self.song)
+        
+
