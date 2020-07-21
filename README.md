@@ -1,1 +1,1 @@
-# Simple-Music-Player
+# Teddie-Music-Player
