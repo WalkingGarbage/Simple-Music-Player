@@ -36,7 +36,17 @@ class queue:
 
     def play(self):
         print(self.song)
-        source = mpv.MPV(ytdl=True)
-        source.play(self.dir + self.song)
-        
+        self.source = mpv.MPV(ytdl=True)
+        self.source.play(self.dir + self.song)
+    
+    def loop(self):
+        while True:
+            action = input("Input: ")
+            if action == 'p' or action == 'P':
+                if self.source.pause == False:
+                    self.source.pause = True
+                else:
+                    self.source.pause = False
+            else:
+                break
 

@@ -7,6 +7,4 @@ queue = player.queue(path)
 queue.listtracks()
 queue.seltracks()
 queue.play()
-while True:
-    stop = input("Press ENTER to stop")
-    break
+queue.loop()
