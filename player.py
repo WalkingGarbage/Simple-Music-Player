@@ -2,7 +2,7 @@
 
 import os
 import mpv
-from playsound import playsound
+import globals
 
 
 
@@ -35,6 +35,12 @@ class queue:
     def play(self):                                                                                 #plays the song
         print(self.song)
         self.source = mpv.MPV(ytdl=True)                                                            #initializes the class of the track
+        f = open(globals.tempdir + globals.playlist, 'r+') 
+
+        linnum = int(len(open(globals.tempdir + 'playlist.txt').readlines(  )))
+        for _ in range(linnum):
+            self.source.playlist_append(f.readline(globals.tempdir + 'playlist.txt'))
+        f.close()
         self.source.play(self.dir + self.song)                                                      #actually plays the song
     
     def loop(self):
@@ -47,10 +53,7 @@ class queue:
                     self.source.pause = False
             
             elif action == 's' or action == 'S':                                                    #skips to the next track of the list
-                self.source.terminate()                                                             #stop the 'now playing' track
-                self.num = self.num + 1
-                self.song = self.tracks[self.num]
-                self.source.play(self.dir + self.song)
+                self.source.playlist_next()
 
             else:
                 break                                                                               #exits the loop

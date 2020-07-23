@@ -2,11 +2,13 @@
 
 import player
 import ascii
+import settings
+import globals
 
 
     ##################################
     #                                #
-    #           ASCII ART            #
+    #              LOGO              #
     #                                #
     ##################################
 
@@ -24,6 +26,8 @@ ascii.spacer()
     ##################################
 
 
+globals.init()
+settings.setup()                                    #creates the enviroment
 path = "/home/fra/Music/"                           #sets the default directory
 queue = player.queue(path)                          #initializes the queue
 queue.listtracks()                                  #prints a list of all audio files in the default directory
