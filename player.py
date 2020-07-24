@@ -2,7 +2,7 @@
 
 import os
 import mpv
-import globals
+#import globals
 
 
 
@@ -10,7 +10,13 @@ class queue:
 
     def __init__(self, path):                                                                       #initializes the class and its variables
         self.dir = path
+        self.confdir = r'config/'
+        self.tempdir = self.confdir + r'temp/'
+        self.playlist = 'playlist.txt'
         pass
+
+    def getconf(self):
+        return self.confdir, self.tempdir, self.playlist
 
     def listtracks(self):                                                                           #makes a list of all the audio files in the default directory and prints it
         print("""TRACKS:
@@ -34,12 +40,13 @@ class queue:
 
     def play(self):                                                                                 #plays the song
         print(self.song)
+        #self.source = mpv.MPV(ytdl=True, log_handler=print, loglevel='debug')                                                            #debug
         self.source = mpv.MPV(ytdl=True)                                                            #initializes the class of the track
-        f = open(globals.tempdir + globals.playlist, 'r+') 
+        f = open(self.tempdir + self.playlist, 'r+') 
 
-        linnum = int(len(open(globals.tempdir + 'playlist.txt').readlines(  )))
+        linnum = int(len(open(self.tempdir + self.playlist).readlines(  )))
         for _ in range(linnum):
-            self.source.playlist_append(f.readline(globals.tempdir + 'playlist.txt'))
+            self.source.playlist_append(f.readline(selg.tempdir + self.playlist))
         f.close()
         self.source.play(self.dir + self.song)                                                      #actually plays the song
     

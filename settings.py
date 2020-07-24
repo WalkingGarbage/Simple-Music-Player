@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 
 import os
-import globals
+#import globals
 
 
 
-def setup():
+def setup(confdir, tempdir, playlist):
 
-    if not os.path.exists(globals.confdir):
-        os.makedirs(globals.confdir)
+    if not os.path.exists(confdir):
+        os.makedirs(confdir)
         print("Created config directory!")
 
-    if not os.path.exists(globals.tempdir):
-        os.makedirs(globals.tempdir)
+    if not os.path.exists(tempdir):
+        os.makedirs(tempdir)
         print("Created temp directory!")
 
-    f = open(globals.tempdir + 'playlist.txt', 'w+')
+    f = open(tempdir + playlist, 'w+')
     f.write("")                                                                                 #empties the directory file
     f.close()
 
