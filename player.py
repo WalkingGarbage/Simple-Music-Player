@@ -46,7 +46,7 @@ class queue:
 
         linnum = int(len(open(self.tempdir + self.playlist).readlines(  )))
         for _ in range(linnum):
-            self.source.playlist_append(f.readline(selg.tempdir + self.playlist))
+            self.source.playlist_append(f.readline(self.tempdir + self.playlist))
         f.close()
         self.source.play(self.dir + self.song)                                                      #actually plays the song
     
