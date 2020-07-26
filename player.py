@@ -55,15 +55,20 @@ class queue:
     def loop(self):
         while True:                                                                                 #sets the loop
             action = input("Input: ")
-            if action == 'p' or action == 'P':                                                      #pauses the track
+            if action.lower() == 'p':                                                      #pauses the track
                 if self.source.pause == False:
                     self.source.pause = True
                 else:
                     self.source.pause = False
             
-            elif action == 's' or action == 'S':                                                    #skips to the next track of the list
+            elif action.lower() == 's':                                                    #skips to the next track of the list
                 self.source.playlist_next()
-
+            
+            elif action.lower() == 't':                                                     #get time
+                @self.source.property_observer("time-pos")
+                def time(_name, value):
+                    print("\rNow playing at {:.2f}s".format(value), end = "", flush = True)
+            
             else:
                 break                                                                               #exits the loop
 
