@@ -31,13 +31,15 @@ class queue:
 
     def seltracks(self):                                                                            #makes the user select the track from the list
         while True:
-            self.num = int(input("Select the track: "))
-            if self.num > 0 and self.num <= len(self.tracks):                                       #checks if the number of the track is in the list
-                self.song = self.tracks[self.num - 1]
-                break
-            else:
-                print ("Select a number in the given list!")
-
+            try:
+                self.num = int(input("Select the track: "))
+                if self.num > 0 and self.num <= len(self.tracks):                                       #checks if the number of the track is in the list
+                    self.song = self.tracks[self.num - 1]
+                    break
+                else:
+                    print ("Select a number in the given list!")
+            except ValueError:
+                print("Select a number in the given list!")
     def play(self):                                                                                 #plays the song
         print(self.song)
         #self.source = mpv.MPV(ytdl=True, log_handler=print, loglevel='debug')                                                            #debug
