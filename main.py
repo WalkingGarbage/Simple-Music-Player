@@ -27,14 +27,16 @@ ascii.spacer()
     #                                #
     ##################################
 
+try:
+    if os.path.exists(sys.argv[1]):
+        path = sys.argv[1]
+except IndexError:
+    path = input("Insert path: ")
+    while not os.path.exists(path):
+        path = input("Insert path: ")
 
-if os.path.exists(sys.argv[1]):
-    if sys.argv[1][-1] != '/':
-        sys.argv[1] = sys.argv[1] + '/'
-    path = sys.argv[1]
-else:
-    print("Error: Insert a path to a playlist!")
-    exit(1)
+if path[-1] != '/':
+    path += '/'
 
 queue = player.queue(path)                          #initializes the queue
 #globals.init()
