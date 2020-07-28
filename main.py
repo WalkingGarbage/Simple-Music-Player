@@ -4,6 +4,7 @@ import player
 import ascii
 import settings
 import sys
+import os
 #import globals
 
 
@@ -26,8 +27,11 @@ ascii.spacer()
     #                                #
     ##################################
 
-if len(sys.argv) != 1:
-    path = sys.argv[1]                           #sets the default directory
+
+if os.path.exists(sys.argv[1]):
+    if sys.argv[1][-1] != '/':
+        sys.argv[1] = sys.argv[1] + '/'
+    path = sys.argv[1]
 else:
     print("Error: Insert a path to a playlist!")
     exit(1)

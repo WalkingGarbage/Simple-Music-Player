@@ -74,7 +74,7 @@ class queue:
                     pass
             """
 
-            @self.source.on_key_press('p')
+            @self.source.on_key_press('SPACE')
             def pause():
                 if self.source.pause == False:
                     self.source.pause = True
