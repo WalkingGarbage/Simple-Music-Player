@@ -31,7 +31,7 @@ class queue:
         
         with open(self.tempdir + self.playlist, 'a') as playlist:
             for i in range(len(self.tracks)):
-                playlist.write(self.tracks[i] + "\n")
+                playlist.write(self.dir + self.tracks[i] + "\n")
 
     def seltracks(self):                                                                            #makes the user select the track from the list
         while True:
@@ -53,7 +53,6 @@ class queue:
 
         linnum = int(len(open(self.tempdir + self.playlist).readlines(  )))
         
-        self.source.loop_playlist = 'inf' 
         self.source.play(self.dir + self.song) #actually plays the song
         
         for _ in range(linnum):
@@ -81,10 +80,26 @@ class queue:
                 else:
                     self.source.pause = False
 
-            @self.source.on_key_press('s')            
-            def skip():
-                pass
+            @self.source.on_key_press('n')            
+            def skip_next():
+                if self.num < len(self.tracks):
+                    self.num += 1
+                else:
+                    self.num = 1
 
+                self.source.stop()
+                self.source.play(self.dir + self.tracks[self.num - 1])
+            
+            @self.source.on_key_press('p')            
+            def skip_prev():
+                if self.num > 1:
+                    self.num -= 1
+                else:
+                    self.num = len(self.tracks)
+
+                self.source.stop()
+                self.source.play(self.dir + self.tracks[self.num - 1])
+            
             @self.source.on_key_press('q')
             def quit():
                 global status
