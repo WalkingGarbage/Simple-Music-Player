@@ -27,6 +27,8 @@ ascii.spacer()
     #                                #
     ##################################
 
+stat = True
+
 try:
     if os.path.exists(sys.argv[1]):
         path = sys.argv[1]
@@ -37,6 +39,14 @@ except IndexError:
 
 if path[-1] != '/':
     path += '/'
+
+for file in os.listdir(path):
+    if file.endswith(".mp3") or file.endswith(".waw"):
+        stat = False
+        break
+
+if stat:
+    raise FileNotFoundError("There isn't any .mp3 or .waw files in this directory")
 
 queue = player.queue(path)                          #initializes the queue
 #globals.init()
