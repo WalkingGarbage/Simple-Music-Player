@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+__author__ = "WalkingGarbage, open-antux"
+__version__ = 1.0
+
 import player
 import ascii
 import settings
