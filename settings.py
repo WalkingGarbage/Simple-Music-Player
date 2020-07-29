@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
 import os
-#import globals
-
-
 
 def setup(confdir, tempdir, playlist):
+    """ Create the playlist file """
 
     if not os.path.exists(confdir):
         os.makedirs(confdir)
@@ -16,35 +14,23 @@ def setup(confdir, tempdir, playlist):
         print("Created temp directory!")
 
     f = open(tempdir + playlist, 'w+')
-    f.write("")                                                                                 #empties the directory file
+    f.write("") # Empties the directory file
     f.close()
 
-def setplaylist(path):
+def checkPath(path):
+    """ Check if there are any audio files """
 
-    playlist = open(globals.tempdir + 'playlist.txt', 'a+')
+    stat = True
 
-    for file in os.listdir(path):
-        if file.endswith(".mp3") or file.endswith(".wav"):                                      #checks the files' extension
-            playlist.write(file + '\n')
-    playlist.close()
+    if path[-1] != '/': # Check if the path was written correctly
+        path += '/' # Add a '/' at the end of the path
 
-def checkddir():
+    for file in os.listdir(path): # Check if the path has audio files
+        if file.endswith(".mp3") or file.endswith(".waw"):
+            stat = False
+            break
 
-    ddir = open(globals.confdir + 'ddir.conf', 'r')
-    out = ddir.readline()
-    ddir.close()
-
-    return out
-
-
-def setddir():
-     
-    ddir = open(globals.confdir + 'ddir.conf', 'w+')
-    ddir.write("")
-    ddir.close()
-
-    ddir = open(globals.confdir + 'ddir.conf', 'a+')
-    ddir.write(input("New music directory:"))
-
-
-
+    if stat:
+        raise FileNotFoundError(
+                "There isn't any .mp3 or .waw files in this directory"
+                )

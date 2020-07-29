@@ -1,6 +1,8 @@
 
 
 def title():
+    """ Return the title """
+
     text = """                         ;           ;                          
                          ED.         ED.                        
                        ,;E#Wi        E#Wi                     ,;
@@ -17,15 +19,15 @@ def title():
           fE          tt E##D.       E##D.        E#t        tt 
            :             E#t         E#t          ,;.           
                          L:          L:                         
-
 """
-    print(text)
 
+    return text
 
 
 
 
 def logo():
+    """ Return the logo """
     text = """                                  ............                                  
                            ...........................                          
                       .....................................                     
@@ -54,23 +56,5 @@ def logo():
                           .*///****,,,,,,,,,,,,,,,,,,,                          
                                  ..********,*,                                  """
     
-
-    print(text)
-
-
-
-
-def spacer():
-    print("""
-
-
-
-    """)
-
-
-
-
-
-
-
+    return text
 
