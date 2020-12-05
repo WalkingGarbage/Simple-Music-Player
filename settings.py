@@ -14,17 +14,17 @@ def setup(confdir, tempdir, playlist):
         print("Created temp directory!")
 
     f = open(tempdir + playlist, 'w+')
-    f.write("") # Empties the directory file
+    f.write("")                         # Empties the directory file
     f.close()
 
 def checkPath(path):
     """ Check if there are any audio files """
     stat = True
 
-    if path[-1] != '/': # Check if the path was written correctly
-        path += '/' # Add a '/' at the end of the path
+    if path[-1] != '/':                 # Check if the path was written correctly
+        path += '/'                     # Add a '/' at the end of the path
 
-    for file in os.listdir(path): # Check if the path has audio files
+    for file in os.listdir(path):       # Check if the path has audio files
         if file.endswith(".mp3") or file.endswith(".waw"):
             stat = False
             break

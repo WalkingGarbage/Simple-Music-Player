@@ -41,10 +41,6 @@ while stat:
     if settings.checkPath(path):
         stat = True
 
-
-
-settings.checkPath(path)
-
 queue = player.queue(path) # Initializes the queue
 settings.setup(queue.getconf()[0], 
         queue.getconf()[1], 

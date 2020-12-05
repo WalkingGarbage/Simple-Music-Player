@@ -8,6 +8,9 @@ class queue:
     def __init__(self, path):
         """ Initializes the class and its variables """
 
+        if path[-1] != '/':                 # Check if the path was written correctly
+            path += '/'                     # Add a '/' at the end of the path
+
         self.dir = path
         self.confdir = r'config/'
         self.tempdir = self.confdir + r'temp/'
