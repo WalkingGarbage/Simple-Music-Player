@@ -19,7 +19,6 @@ def setup(confdir, tempdir, playlist):
 
 def checkPath(path):
     """ Check if there are any audio files """
-
     stat = True
 
     if path[-1] != '/': # Check if the path was written correctly
@@ -30,7 +29,10 @@ def checkPath(path):
             stat = False
             break
 
-    if stat:
-        raise FileNotFoundError(
-                "There isn't any .mp3 or .waw files in this directory"
-                )
+        if stat:
+            print("No file")
+        return stat
+
+#            raise FileNotFoundError(
+#                    "There isn't any .mp3 or .waw files in this directory"
+#                   )

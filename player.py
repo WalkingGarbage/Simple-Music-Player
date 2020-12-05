@@ -26,12 +26,15 @@ class queue:
 
         print("TRACKS: \n")
         self.tracks = []
-        x = 0
-        for file in os.listdir(self.dir):
-            if file.endswith(".mp3") or file.endswith(".wav"): # Checks the files' extension
-                x += 1
-                print(str(x) + ' ' + file)
-                self.tracks = self.tracks + [file]
+        try:
+            x = 0
+            for file in os.listdir(self.dir):
+                if file.endswith(".mp3") or file.endswith(".wav"): # Checks the files' extension
+                    x += 1
+                    print(str(x) + ' ' + file)
+                    self.tracks = self.tracks + [file]
+        except:
+            print("No file")
         
         with open(self.tempdir + self.playlist, 'a') as playlist:
             for i in range(len(self.tracks)):

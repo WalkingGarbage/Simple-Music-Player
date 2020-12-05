@@ -29,13 +29,18 @@ print("\n\n\n") # Spacer
 
 stat = True
 
-try:
-    if os.path.exists(sys.argv[1]): # Check if the path exist
-        path = sys.argv[1] 
-except IndexError: # If there isn't arguments
-    path = input("Insert path: ") 
-    while not os.path.exists(path):
-        path = input("Insert path: ")
+while stat:
+    try:
+        if os.path.exists(sys.argv[1]): # Check if the path exist
+            path = sys.argv[1] 
+    except IndexError: # If there isn't arguments
+        path = input("Insert path: ") 
+        while not os.path.exists(path):
+            path = input("Insert path: ")
+    stat = False
+    if settings.checkPath(path):
+        stat = True
+
 
 
 settings.checkPath(path)
