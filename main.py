@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 
 __author__ = "WalkingGarbage, open-antux"
-__version__ = 1.0
+__version__ = 0.1
 
+from domain import ascii
+
+from domain import player
+
+# Show title and logo
+print(ascii.title() + "\n" + ascii.logo() + "\n\n\n")
+
+player = player.Player()
+
+"""
 import player
 import ascii
 import settings
@@ -18,9 +28,7 @@ import os
 
 print(ascii.title() + "\n" + ascii.logo()) # Show title and logo
 print("\n\n\n") # Spacer
-
-
-
+os.path.exists
     ##################################
     #                                #
     #           MAIN CORE            #
@@ -49,3 +57,4 @@ queue.listtracks() # Prints a list of all audio files in the default directory
 queue.seltracks() # Select a track from the list
 queue.play() # Plays the selected track
 queue.loop() # Sets a loop where the user can perform different actions
+"""
