@@ -1,40 +1,26 @@
-import os
 import mpv
-import shutil
 
 class Player:
 
     def __init__(self):
-        """ Initialize Player """     
+        """ Initializing attributes """
+        #self.__source = mpv.MPV(ytdl=True, terminal=True, input_terminal=True, loglevel='debug')
+        self.__source = mpv.MPV(ytdl = True, terminal = False)
+        self.__counter = 0
 
-        self.path = os.path.expanduser("~") + "/Teddie Music/"
+    def playSong(self, pathSong):
+        """ Start the song """
         
-        if not os.path.exists(self.path):
-            os.makedirs(self.path)
-        
-        try:
-            os.mknod(self.path + "player.txt")
-        except:
-            pass
+        self.__source.play(pathSong)
+        self.__source.wait_for_playback()
 
-    def setPath(self, path):
-        """ Method to set another path """
+    def stopSong(self):
+        """ Stop the song """
 
-        if not os.path.exists(path):
-            raise Exception("Path doesn't exist")
+        # TODO: Looking for a way to stop the song
+        self.__source.terminate()
 
-        # Delete the default path with its content to set another default path
-        shutil.rmtree(self.path)
-        os.mknod(path + "player.txt")
+    def getCounter(self):
+        """ Return the index of the playlist """
 
-        self.path = path
-
-    def getPath(self):
-        """ Method that return the default path """
-
-        return self.path
-
-        
-
-
-
+        return self.__counter
