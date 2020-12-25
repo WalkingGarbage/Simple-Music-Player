@@ -3,14 +3,18 @@
 __author__ = "WalkingGarbage, open-antux"
 __version__ = 0.1
 
-from domain import ascii
-
+from resources_manager import manager
 from domain import player
+from persistence import filePersistence
 
-# Show title and logo
-print(ascii.title() + "\n" + ascii.logo() + "\n\n\n")
+# TODO: Add UserInterface object
+manager = manager.Manager(
+    player.Player(),
+    filePersistence.Persistence()
+)
 
-player = player.Player()
+manager.playSong()
+manager.stopSong()
 
 """
 import player
