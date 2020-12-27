@@ -2,6 +2,6 @@
 
 A TUI music player written in python
 
-## Dependency
+## Dependencies
 
 <code>pip install python-mpv npyscreen</code>
