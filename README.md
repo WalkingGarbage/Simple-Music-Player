@@ -1,4 +1,7 @@
 # Teddie-Music-Player
 
+A TUI music player written in python
+
 ## Dependency
-<code>yay -S python-mpv</code>
+
+<code>pip install python-mpv npyscreen</code>
