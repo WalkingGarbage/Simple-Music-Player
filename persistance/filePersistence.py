@@ -37,8 +37,9 @@ class Persistence:
         f = open(self.__playlist, "r")
         songs = f.readlines()
 
-        if(n > len(songs)):
+        if(len(songs) == 0):
+            print("No songs in playlist")
+        elif(n > len(songs)):
             n = 0
 
         return songs[n].replace("\n", "")
-

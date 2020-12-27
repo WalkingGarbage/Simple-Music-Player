@@ -5,7 +5,7 @@ __version__ = 0.1
 
 from resources_manager import manager
 from domain import player
-from persistence import filePersistence
+from persistance import filePersistence
 
 # TODO: Add UserInterface object
 manager = manager.Manager(
